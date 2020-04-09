@@ -8,9 +8,13 @@ This repository is source for integrating Zimbra Single Server and Z-Push + Zimb
 Install dependecies
 
 ```bash
-apt update
-apt upgrade
-apt install git php7.2-cli php7.2-cgi php7.2-soap php7.2-mbstring php7.2-curl php7.2-xml php-memcached -y
+yum update
+yum upgrade
+yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+yum install yum-utils
+yum -y install centos-release-scl.noarch
+yum -y install rh-php72 rh-php72-php rh-php72-php-fpm httpd
+yum install git php72-php php72-php-cli php72-php-soap php72-php-mbstring php72-php-curl php72-php-xml -y
 ```
 
 Clone repo
@@ -30,13 +34,13 @@ chown zimbra:zimbra /var/lib/z-push /var/log/z-push
 Save z-push folder on /opt/
 
 ```bash
-cp -rvf z-push /opt/
+cp -rvf zcs-push /opt/z-push
 ```
 
 Create symlink
 
 ```bash
-ln -sf /opt/z-push /opt/zimbra/jetty/webapps/
+ln -sf /opt/z-push/z-push /opt/zimbra/jetty/webapps/
 ```
 
 Save php script on /usr/bin
