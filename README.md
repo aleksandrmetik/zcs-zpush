@@ -14,7 +14,7 @@ yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.r
 yum install yum-utils
 yum -y install centos-release-scl.noarch
 yum -y install rh-php72 rh-php72-php rh-php72-php-fpm httpd
-yum install git php72-php php72-php-cli php72-php-soap php72-php-mbstring php72-php-curl php72-php-xml -y
+yum install git php72-php php72-php-cli php72-php-soap php72-php-mbstring php72-php-curl php72-php-xml php72-php-pecl-memcached php72-php-pecl-memcache -y
 ```
 
 Clone repo
@@ -61,15 +61,16 @@ Backup and replace jetty.xml.in
 
 ```bash
 cp /opt/zimbra/jetty/etc/jetty.xml.in /opt/zimbra/jetty/etc/jetty.xml.in.backup
-cp jetty.xml.in-for-zcs-8815 /opt/zimbra/jetty/etc/jetty.xml.in
+cp /opt/z-push/jetty.xml.in-for-zcs-8815 /opt/zimbra/jetty/etc/jetty.xml.in
 chown zimbra.zimbra /opt/zimbra/jetty/etc/jetty.xml.in
 ```
 
-Replace php.ini
+Find. backup and replace php.ini
 
 ```bash
-cp /etc/php/7.2/cgi/php.ini /etc/php/7.2/cgi/php.ini.backup
-cp php.ini /etc/php/7.2/cgi/php.ini
+php72 -v --ini
+cp /etc/php.ini  /etc/php.ini.backup
+cp /opt/z-push/php.ini /etc/php.ini
 ```
 
 Restart Zimbra Mailbox
