@@ -68,7 +68,7 @@ chown zimbra.zimbra /opt/zimbra/jetty/etc/jetty.xml.in
 Find. backup and replace php.ini
 
 ```bash
-php72 -v --ini
+php72 --ini
 cp /etc/php.ini  /etc/php.ini.backup
 cp /opt/z-push/php.ini /etc/php.ini
 ```
